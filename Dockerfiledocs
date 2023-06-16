@@ -1,0 +1,23 @@
+FROM node:14.20.0-alpine3.16 as builder
+
+WORKDIR /frontend
+
+ENV PATH /frontend/node_modules/.bin:$PATH
+
+COPY . ./
+
+RUN yarn config set registry 'https://mirrors.huaweicloud.com/repository/npm/' \
+  && yarn \
+  && export NODE_OPTIONS=--max_old_space_size=3072 \
+  && yarn docs:build
+
+FROM nginx:1.19.6-alpine
+
+WORKDIR /usr/share/nginx/html
+
+COPY --from=builder /frontend/nginx.conf /etc/nginx/conf.d/default.conf
+
+COPY --from=builder /frontend/docs-dist .
+
+# 默认配置文件 /etc/nginx/conf.d/
+

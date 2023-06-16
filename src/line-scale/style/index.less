@@ -1,0 +1,86 @@
+@primary-color: #4096ff;
+@textColor: #454d64;
+
+@-webkit-keyframes pt-line-scale {
+  0% {
+    -webkit-transform: scaley(1);
+    transform: scaley(1);
+  }
+  50% {
+    -webkit-transform: scaley(0.4);
+    transform: scaley(0.4);
+  }
+  100% {
+    -webkit-transform: scaley(1);
+    transform: scaley(1);
+  }
+}
+@keyframes pt-line-scale {
+  0% {
+    -webkit-transform: scaley(1);
+    transform: scaley(1);
+  }
+  50% {
+    -webkit-transform: scaley(0.4);
+    transform: scaley(0.4);
+  }
+  100% {
+    -webkit-transform: scaley(1);
+    transform: scaley(1);
+  }
+}
+
+.pt-loader-wrap {
+  .pt-line-scale > div:nth-child(1) {
+    -webkit-animation: pt-line-scale 1s -0.4s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+    animation: pt-line-scale 1s -0.4s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+  }
+
+  .pt-line-scale > div:nth-child(2) {
+    -webkit-animation: pt-line-scale 1s -0.3s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+    animation: pt-line-scale 1s -0.3s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+  }
+
+  .pt-line-scale > div:nth-child(3) {
+    -webkit-animation: pt-line-scale 1s -0.2s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+    animation: pt-line-scale 1s -0.2s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+  }
+
+  .pt-line-scale > div:nth-child(4) {
+    -webkit-animation: pt-line-scale 1s -0.1s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+    animation: pt-line-scale 1s -0.1s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+  }
+
+  .pt-line-scale > div:nth-child(5) {
+    -webkit-animation: pt-line-scale 1s 0s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+    animation: pt-line-scale 1s 0s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
+  }
+
+  .pt-line-scale > div {
+    background-color: @primary-color;
+    width: 4px;
+    height: 35px;
+    border-radius: 2px;
+    margin: 2px;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    display: inline-block;
+  }
+}
+
+.pt-loader-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 25%;
+  margin: -10px;
+  opacity: 0.8;
+  .pt-loader-text-tip {
+    line-height: 2;
+    font-size: 14px;
+    color: @textColor;
+  }
+}
